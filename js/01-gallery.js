@@ -32,24 +32,24 @@ function onItemClick(e) {
     openModal(e.target)
 };
 
-let modalWindow
+let instance
 
 function openModal (img) {
-modalWindow = basicLightbox.create(
+instance = basicLightbox.create(
   `<img src="${img.dataset.source}"/>`,
   {
-    onShow: modalWindow => {
+    onShow: instance => {
       window.addEventListener('keydown', closeByEsc);
     },
-    onClose: modalWindow => {
+    onClose: instance => {
       window.removeEventListener('keydown', closeByEsc);
     },
   }
 );
-modalWindow.show();
+instance.show();
 }
 function closeByEsc ({code}) {
     if (code === 'Escape') {
-        modalWindow.close()
+        instance.close()
     }
 }
